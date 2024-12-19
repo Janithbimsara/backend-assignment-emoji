@@ -1,7 +1,7 @@
 const Emoji = require("../models/emojiStoryModel");
 
 const EMOJI_TRANSLATIONS = {
-  "\ud83d\ude04": "smile",
+  '\ud83d\ude04': "smile",
 };
 
 function translateEmoji(sequence) {
@@ -53,4 +53,18 @@ const getById = async (req, res) => {
   }
 };
 
-module.exports = { create, getAll, getById };
+const translate = async (req, res) => {
+  try {
+    const story = await Emoji.findById(req.params.id);
+    if (!story) {
+      return res.status(404).json({ error: "Story cannot be found!" });
+    }
+    const translation = translateEmoji(story.emojiSequence);
+    res.status(200).json({ id: story._id, title: story.title, translation: translation });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: "Database error occured." });
+  }
+};
+
+module.exports = { create, getAll, getById, translate };
