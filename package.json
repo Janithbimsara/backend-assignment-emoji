@@ -1,0 +1,21 @@
+{
+  "name": "ase-backend-assesment",
+  "version": "1.0.0",
+  "description": "backend service that handles emoji story creation and translation. The system should store stories and provide basic translation functionality based on predefined patterns",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon server.js"
+  },
+  "author": "janithBimsara",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
